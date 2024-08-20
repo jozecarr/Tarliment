@@ -32,8 +32,6 @@ public class cardMover : MonoBehaviour
     public float dampingConstant = 50f;
     public float handHeight = 3f;
 
-    public int rotMod = 0;
-
     void Update()
     {
         if(!cardIsHeld){
@@ -76,10 +74,26 @@ public class cardMover : MonoBehaviour
                 cardRB.AddForce(springForce + dampingForce);
 
                 Quaternion targetQuat = Quaternion.Euler(
-                    90 + cardRB.velocity.z + 180 * rotMod, 0, cardRB.velocity.x
+                    90 + cardRB.velocity.z + 180 * card.GetComponent<cardController>().rotMod, 0, cardRB.velocity.x
                 );
 
-                if(Input.GetKeyDown(KeyCode.F)) rotMod++;
+                if(Input.GetKeyDown(KeyCode.F)) {
+                    card.GetComponent<cardController>().rotMod++;
+
+                }
+
+                /////
+                
+                if(card.gameObject.name == "Health"){
+                    Debug.Log(card.GetComponent<cardController>().rotMod);
+                    if(card.GetComponent<cardController>().rotMod % 2 != 0){
+                        card.transform.Find("Back").GetComponent<SpriteRenderer>().enabled = true;
+                    } else {
+                        card.transform.Find("Back").GetComponent<SpriteRenderer>().enabled = false;
+                    };
+                }
+
+                ////
 
                 cardRB.transform.rotation = Quaternion.Lerp(cardRB.transform.rotation, targetQuat, 0.01f);
             }

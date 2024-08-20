@@ -8,6 +8,8 @@ public class cardController : MonoBehaviour
     public bool isBeingMoved = false;
     public static string cardType = "Blank";
 
+    public int rotMod = 0;
+
     public static Sprite cardFront;
 
     void SetCardFront() {

@@ -5,48 +5,46 @@ using UnityEngine;
 
 public class health : MonoBehaviour
 {
-    public Dictionary<string, Dictionary<string, float>> healthVals = new Dictionary<string, Dictionary<string, float>>()
+    public Dictionary<string, Dictionary<string, (float, float)>> healthVals = new Dictionary<string, Dictionary<string, (float, float) >>()
     {
-        { "mid", new Dictionary<string, float>
+        { "mid", new Dictionary<string, (float, float)>
             {
-                { "head", 1.0f },
-                { "neck", 1.0f },
-                { "chest", 1.0f},
-                { "stomach", 1.0f},
+                { "head", (1.0f, 1.0f) },
+                { "neck", (1.0f, 1.0f) },
+                { "chest", (1.0f, 1.0f)},
+                { "stomach", (1.0f, 1.0f)},
             }
         },
-        { "left", new Dictionary<string, float>
+        { "left", new Dictionary<string, (float, float)>
             {
-                { "arm", 1.0f },
-                { "hand", 1.0f},
-                { "leg", 1.0f}
+                { "arm", (1.0f, 1.0f) },
+                { "hand", (1.0f, 1.0f)},
+                { "leg", (1.0f, 1.0f)}
             }
         },
-        { "right", new Dictionary<string, float>
+        { "right", new Dictionary<string, (float, float)>
             {
-                { "arm", 1.0f},
-                { "hand", 1.0f},
-                { "leg", 1.0f}
+                { "arm", (1.0f, 1.0f)},
+                { "hand", (1.0f, 1.0f)},
+                { "leg", (1.0f, 1.0f)}
             }
         }
     };
 
     public float GetAvgHealth(){
-        float sum = 0;
-        
-        sum += healthVals["mid"]["head"];
-        sum += healthVals["mid"]["neck"];
-        sum += healthVals["mid"]["chest"];
-        sum += healthVals["mid"]["stomach"];
-        
-        sum += healthVals["left"]["arm"];
-        sum += healthVals["left"]["hand"];
-        sum += healthVals["left"]["leg"];
+        (float, float) sum = (0,0);
 
-        sum += healthVals["right"]["arm"];
-        sum += healthVals["right"]["hand"];
-        sum += healthVals["right"]["leg"];
+        sum.Item1 += healthVals["mid"]["neck"].Item1;
+        sum.Item1 += healthVals["mid"]["head"].Item1;
+        sum.Item1 += healthVals["mid"]["chest"].Item1;
+        sum.Item1 += healthVals["mid"]["stomach"].Item1;
+        sum.Item1 += healthVals["left"]["arm"].Item1;
+        sum.Item1 += healthVals["left"]["hand"].Item1;
+        sum.Item1 += healthVals["left"]["leg"].Item1;
+        sum.Item1 += healthVals["right"]["arm"].Item1;
+        sum.Item1 += healthVals["right"]["hand"].Item1;
+        sum.Item1 += healthVals["right"]["leg"].Item1;
         
-        return sum / 10;
+        return sum.Item1 / 10;
     }
 }
