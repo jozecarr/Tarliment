@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class cardMover : MonoBehaviour
@@ -67,7 +65,7 @@ public class cardMover : MonoBehaviour
                 cardRB.useGravity = false;
 
                 Vector3 handPos = GetWorldMousePos() + new Vector3(0, handHeight, 0);
-                Vector3 forceDir = handPos- card.transform.position;
+                Vector3 forceDir = handPos - card.transform.position;
                 float seperation = forceDir.magnitude;
 
                 forceDir.Normalize();

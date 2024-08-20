@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class healthCardController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public health playerHealth;
+
+    void Awake(){
+        playerHealth = GameObject.Find("player").GetComponent<health>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+    bool[] f = {false, false};
+    void Update(){
+
+        if(Input.GetKeyDown(KeyCode.F)){
+            transform.Find("0.5").GetComponent<SpriteRenderer>().enabled = !f[0];
+            f[0] = !f[0];
+        }
+
+        if(Input.GetKeyDown(KeyCode.Z)){
+            transform.Find("0").GetComponent<SpriteRenderer>().enabled = !f[1];
+            f[1] = !f[1];
+        }
+
     }
 }
