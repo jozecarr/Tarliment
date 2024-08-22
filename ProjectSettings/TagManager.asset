@@ -45,3 +45,6 @@ TagManager:
   - name: New Layer 1
     uniqueID: 656363693
     locked: 0
+  - name: Card
+    uniqueID: 230256033
+    locked: 0
