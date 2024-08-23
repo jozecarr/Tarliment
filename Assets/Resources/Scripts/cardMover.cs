@@ -59,6 +59,7 @@ public class cardMover : MonoBehaviour
                 cardRB.useGravity = true;
                 cardIsHeld = false;
                 borderInstance.transform.position = new Vector3(0,1000,0);
+                StartCoroutine(UpdatePlayLineOnPlaced());
             } else {
                 cardRB.useGravity = false;
 
@@ -98,6 +99,12 @@ public class cardMover : MonoBehaviour
                 cardRB.transform.rotation = Quaternion.Lerp(cardRB.transform.rotation, targetQuat, 0.01f);
             }
         }
+        
+    }
+
+    IEnumerator UpdatePlayLineOnPlaced(){
+        while(card.GetComponent<Rigidbody>().velocity.magnitude > 0.01){yield return null;}
+        GameObject.Find("gameManager").GetComponent<gameManager>().UpdatePlayLine();
         
     }
 }

@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class cardController : MonoBehaviour
 {
+    public int id = 0;
     public bool isBeingMoved = false;
-    public static string cardType = "Blank";
+    public static string cardType = "Blank"; 
 
     public int rotMod = 0;
 
@@ -16,7 +17,7 @@ public class cardController : MonoBehaviour
         Transform childTransform = transform.Find("Front");
         Debug.Log(childTransform.name);
         childTransform.GetComponent<SpriteRenderer>().sprite = cardFront;
-    }
+    } 
 
     public void SetCardType(string name) {
         cardType = name;
@@ -24,17 +25,17 @@ public class cardController : MonoBehaviour
         SetCardFront();
     }
 
+    gameManager gm;
 
-    bool f = true;
-    void Update(){
-        if(Input.GetKeyDown(KeyCode.L)){
-            if(f){f=!f;
-                SetCardType("Blank2");
-                Debug.Log(cardFront.name);
-            }else{f=!f;
-                SetCardType("Blank");
-                Debug.Log(cardFront.name);
-            }
-        }
+    void Awake() {
+        gm = GameObject.Find("gameManager").GetComponent<gameManager>();
+        gm.cardCount++;
+        id = ++gm.totCards;
+        gm.UpdateCards(transform.gameObject);
+    }
+
+    void OnDestroy() { 
+        gm.UpdateCards(transform.gameObject);
+        
     }
 }
