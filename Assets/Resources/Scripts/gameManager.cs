@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class gameManager : MonoBehaviour
@@ -17,7 +18,6 @@ public class gameManager : MonoBehaviour
         UpdatePlayLine();
     }
 
-    List<KeyValuePair<int, GameObject>> sortedCards;
     private LineRenderer lineRenderer;
 
     void Start() {
@@ -29,6 +29,8 @@ public class gameManager : MonoBehaviour
         lineRenderer.startWidth = 0.2f;
         lineRenderer.endWidth = 0.2f;
     }
+
+    List<KeyValuePair<int, GameObject>> sortedCards;
 
     public void UpdatePlayLine(){ // called when cards are dropped after being picked up
         sortedCards = cards.OrderBy(pair => pair.Value.transform.position.x).ToList();
@@ -47,9 +49,13 @@ public class gameManager : MonoBehaviour
         }
     }
 
-    private void Update() {
-        Debug.Log(cards.Count);
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.R)) { RunCards(); }
+    }
+
+    void RunCards(){
+        foreach(KeyValuePair<int, GameObject> card in sortedCards) {
+            card.Value.GetComponent<cardController>().DoCardAbility();
+        }
     }
 }
-
-
