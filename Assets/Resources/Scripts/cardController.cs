@@ -28,7 +28,6 @@ public class cardController : MonoBehaviour
     gameManager gm;
 
     void Awake() {
-        Debug.Log("AWAKE" + transform.name);
         gm = GameObject.Find("gameManager").GetComponent<gameManager>();
         gm.cardCount++;
         id = ++gm.totCards;

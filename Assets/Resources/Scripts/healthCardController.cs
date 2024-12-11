@@ -12,23 +12,22 @@ public class healthCardController : MonoBehaviour
     private (float, string, string)[] limbReference= 
     {(1.0f,"chest", "CH")};
 
-    private float previous = 1.0f;
-
     void Awake(){
         playerHealth = GameObject.Find("player").GetComponent<health>();
         healthCard = GameObject.Find("Health");
     }
 
-    void Update(){
-        float avgHealth = playerHealth.GetAvgHealth();
-        if(avgHealth != previous){
-            overlayUpdate(avgHealth);  
-            foreach(var limb in limbReference){
-            limbUpdate(limb.Item1, limb.Item2, limb.Item3);
-        }  
+    public void UpdateLimbs(){
+        overlayUpdate(playerHealth.GetAvgHealth());
+        foreach (var side in playerHealth.healthVals) {
+            foreach (var part in side.Value){
+                string prefix = side.Key.Substring(0, 1).ToUpper() + part.Key.Substring(0, 1).ToUpper();  
+                //ex, chest = MC, left leg = LL, right arm = RA, neck = MN
+                limbUpdate(part.Value.Item1, prefix);
+            }
         }
-        
     }
+        
 
     //Limb References
     //OVERLAY
@@ -47,20 +46,19 @@ public class healthCardController : MonoBehaviour
         }
     }
 
-    private void limbUpdate(float health, string name, string filePrefix){
+    private void limbUpdate(float health, string filePrefix) {
         replace(filePrefix, filePrefix + ((Math.Round(health, 1) * 100)).ToString());
     }
     //Those are long as lines to remember, these are only for the Health card tho as its repeated way too much
-    private void showOnCard(string cardname){
-        healthCard.transform.Find(cardname).GetComponent<SpriteRenderer>().enabled = true;
+    private void showOnCard(string bodyPart) {
+        healthCard.transform.Find(bodyPart).GetComponent<SpriteRenderer>().enabled = true;
     }
-    private void hideOnCard(string cardname){
-        healthCard.transform.Find(cardname).GetComponent<SpriteRenderer>().enabled = false;
+    private void hideOnCard(string bodyPart) {
+        healthCard.transform.Find(bodyPart).GetComponent<SpriteRenderer>().enabled = false;
     }
-    private void replace(string prefix, string newLayer){
+    private void replace(string prefix, string newLayer) {
         for(int i = 0; i < 11; i++){
-            string extra = (i * 10).ToString();
-            hideOnCard(prefix + extra);
+            hideOnCard(prefix + (i * 10));
         }
         showOnCard(newLayer);
     }
