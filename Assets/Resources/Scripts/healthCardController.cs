@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class healthCardController : MonoBehaviour
 {
-    public static health playerHealth;
-    private static GameObject healthCard;
+    public health playerHealth;
+    private GameObject healthCard;
 
     void Awake(){
         playerHealth = GameObject.Find("player").GetComponent<health>();

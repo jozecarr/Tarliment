@@ -47,4 +47,11 @@ public class health : MonoBehaviour
         
         return sum.Item1 / 10;
     }
+
+    public void ApplyDamage(string side, string part, float flesh, float fracture){
+        healthVals[side][part] = (
+            healthVals[side][part].Item1 + flesh, 
+            healthVals[side][part].Item2 + fracture
+        );
+    }
 }
