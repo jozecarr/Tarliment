@@ -36,7 +36,6 @@ public class healthCardController : MonoBehaviour
     }
 
 
-
     //Those are long as lines to remember, these are only for the Health card tho as its repeated way too much
     private void showOnCard(string cardname){
         healthCard.transform.Find(cardname).GetComponent<SpriteRenderer>().enabled = true;

@@ -48,3 +48,12 @@ TagManager:
   - name: Card
     uniqueID: 230256033
     locked: 0
+  - name: Stomach
+    uniqueID: 1695706007
+    locked: 0
+  - name: Chest
+    uniqueID: 1041224843
+    locked: 0
+  - name: Overlay
+    uniqueID: 4280419743
+    locked: 0

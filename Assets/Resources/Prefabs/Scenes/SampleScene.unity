@@ -877,11 +877,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 715484713040388486, guid: 83e99c31996f9854ebc5602bf10126c9, type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 715484713040388486, guid: 83e99c31996f9854ebc5602bf10126c9, type: 3}
       propertyPath: m_SortingLayerID
-      value: 230256033
+      value: -14547553
       objectReference: {fileID: 0}
     - target: {fileID: 865421395954487356, guid: 83e99c31996f9854ebc5602bf10126c9, type: 3}
       propertyPath: m_Enabled
@@ -929,7 +929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2442006274502187731, guid: 83e99c31996f9854ebc5602bf10126c9, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2442006274502187731, guid: 83e99c31996f9854ebc5602bf10126c9, type: 3}
       propertyPath: m_SortingLayerID
