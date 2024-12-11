@@ -36,6 +36,9 @@ public class cardController : MonoBehaviour
 
     void OnDestroy() { 
         gm.UpdateCards(transform.gameObject);
-        
+    }
+
+    public void DoCardAbility(){
+        Debug.Log(id);
     }
 }

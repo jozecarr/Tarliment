@@ -62,6 +62,7 @@ public class cardMover : MonoBehaviour
                 StartCoroutine(UpdatePlayLineOnPlaced());
             } else {
                 cardRB.useGravity = false;
+                cardRB.angularVelocity = new Vector3(0,0,0);
 
                 Vector3 handPos = GetWorldMousePos() + new Vector3(0, handHeight, 0);
                 Vector3 forceDir = handPos - card.transform.position;
@@ -96,7 +97,7 @@ public class cardMover : MonoBehaviour
 
                 ////
 
-                cardRB.transform.rotation = Quaternion.Lerp(cardRB.transform.rotation, targetQuat, 0.01f);
+                cardRB.transform.rotation = Quaternion.Lerp(cardRB.transform.rotation, targetQuat, 0.03f);
             }
         }
         
