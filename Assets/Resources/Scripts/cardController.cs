@@ -40,6 +40,6 @@ public class cardController : MonoBehaviour
     }
 
     public void DoCardAbility(){
-        Debug.Log(id);
+        GetComponent<playCardAction>().Activate();
     } 
 }

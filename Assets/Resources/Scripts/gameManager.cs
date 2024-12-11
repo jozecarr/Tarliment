@@ -42,8 +42,6 @@ public class gameManager : MonoBehaviour
                     sortedCards.RemoveAt(i);
                 }
             }
-            
-            Debug.Log(sortedCards.Count);
 
             lineRenderer.positionCount = sortedCards.Count;
             Vector3[] positions = new Vector3[sortedCards.Count];

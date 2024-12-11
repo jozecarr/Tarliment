@@ -54,4 +54,34 @@ public class health : MonoBehaviour
             healthVals[side][part].Item2 + fracture
         );
     }
+
+    public void printHealth() {
+        Debug.Log(   "left arm fl: " + healthVals["left"]["arm"].Item1    );
+        Debug.Log(  "left hand fl: " + healthVals["left"]["hand"].Item1   );
+        Debug.Log(   "left leg fl: " + healthVals["left"]["leg"].Item1    );
+
+        Debug.Log(       "head fl: " + healthVals["mid"]["head"].Item1    );
+        Debug.Log(       "neck fl: " + healthVals["mid"]["neck"].Item1    );
+        Debug.Log(      "chest fl: " + healthVals["mid"]["chest"].Item1   );
+        Debug.Log(    "stomach fl: " + healthVals["mid"]["stomach"].Item1 );
+        
+        Debug.Log(  "right arm fl: " + healthVals["right"]["arm"].Item1   );
+        Debug.Log( "right hand fl: " + healthVals["right"]["hand"].Item1  );
+        Debug.Log(  "right leg fl: " + healthVals["right"]["leg"].Item1   );
+
+        
+
+        Debug.Log(   "left arm fr: " + healthVals["left"]["arm"].Item2    );
+        Debug.Log(  "left hand fr: " + healthVals["left"]["hand"].Item2   );
+        Debug.Log(   "left leg fr: " + healthVals["left"]["leg"].Item2    );
+
+        Debug.Log(       "head fr: " + healthVals["mid"]["head"].Item2    );
+        Debug.Log(       "neck fr: " + healthVals["mid"]["neck"].Item2    );
+        Debug.Log(      "chest fr: " + healthVals["mid"]["chest"].Item2   );
+        Debug.Log(    "stomach fr: " + healthVals["mid"]["stomach"].Item2 );
+        
+        Debug.Log(  "right arm fr: " + healthVals["right"]["arm"].Item2   );
+        Debug.Log( "right hand fr: " + healthVals["right"]["hand"].Item2  );
+        Debug.Log(  "right leg fr: " + healthVals["right"]["leg"].Item2   );
+    }
 }

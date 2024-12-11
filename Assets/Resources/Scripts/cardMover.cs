@@ -87,7 +87,6 @@ public class cardMover : MonoBehaviour
                 /////
                 
                 if(card.gameObject.name == "Health"){
-                    Debug.Log(card.GetComponent<cardController>().rotMod);
                     if(card.GetComponent<cardController>().rotMod % 2 != 0){
                         card.transform.Find("Back").GetComponent<SpriteRenderer>().enabled = true;
                     } else {
