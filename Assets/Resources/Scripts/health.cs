@@ -9,6 +9,7 @@ public class health : MonoBehaviour
     {
         { "mid", new Dictionary<string, (float, float)>
             {
+                //Health, Fracture
                 { "head", (1.0f, 1.0f) },
                 { "neck", (1.0f, 1.0f) },
                 { "chest", (1.0f, 1.0f)},
@@ -46,5 +47,22 @@ public class health : MonoBehaviour
         sum.Item1 += healthVals["right"]["leg"].Item1;
         
         return sum.Item1 / 10;
+    }
+
+    public float[] getLimbHealth(){
+        float[] limbHealth =
+        {
+        healthVals["mid"]["neck"].Item1,
+        healthVals["mid"]["head"].Item1,
+        healthVals["mid"]["chest"].Item1,
+        healthVals["mid"]["stomach"].Item1,
+        healthVals["left"]["arm"].Item1,
+        healthVals["left"]["hand"].Item1,
+        healthVals["left"]["leg"].Item1,
+        healthVals["right"]["arm"].Item1,
+        healthVals["right"]["hand"].Item1,
+        healthVals["right"]["leg"].Item1,
+        };
+        return limbHealth;
     }
 }
