@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class healthCardController : MonoBehaviour
 {
-    public static health playerHealth;
-    private static GameObject healthCard;
+    public health playerHealth;
+    private GameObject healthCard;
 
     private (float, string, string)[] limbReference= 
     {(1.0f,"chest", "CH")};

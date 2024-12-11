@@ -28,6 +28,7 @@ public class gameManager : MonoBehaviour
         lineRenderer.endColor = Color.blue;
         lineRenderer.startWidth = 0.2f;
         lineRenderer.endWidth = 0.2f;
+        lineRenderer.sortingLayerName = "Overlay";
     }
 
     List<KeyValuePair<int, GameObject>> sortedCards;
@@ -36,11 +37,21 @@ public class gameManager : MonoBehaviour
         sortedCards = cards.OrderBy(pair => pair.Value.transform.position.x).ToList();
 
         if (sortedCards.Count > 1) {
+            for (int i = sortedCards.Count - 1; i >= 0; i--) {
+                if (sortedCards[i].Value.GetComponent<cardController>().cardType != "Play") {
+                    sortedCards.RemoveAt(i);
+                }
+            }
+
             lineRenderer.positionCount = sortedCards.Count;
             Vector3[] positions = new Vector3[sortedCards.Count];
 
             for (int i = 0; i < sortedCards.Count; i++) {
-                positions[i] = new Vector3(sortedCards[i].Value.transform.position.x, 0.1f, sortedCards[i].Value.transform.position.z);
+                positions[i] = new Vector3(
+                    sortedCards[i].Value.transform.position.x, 
+                    0.1f, 
+                    sortedCards[i].Value.transform.position.z
+                );
             }
 
             lineRenderer.SetPositions(positions);

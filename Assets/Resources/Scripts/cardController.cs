@@ -7,7 +7,7 @@ public class cardController : MonoBehaviour
 {
     public int id = 0;
     public bool isBeingMoved = false;
-    public static string cardType = "Blank"; 
+    public string cardType = "Play"; 
 
     public int rotMod = 0;
 
@@ -28,6 +28,7 @@ public class cardController : MonoBehaviour
     gameManager gm;
 
     void Awake() {
+        Debug.Log("AWAKE" + transform.name);
         gm = GameObject.Find("gameManager").GetComponent<gameManager>();
         gm.cardCount++;
         id = ++gm.totCards;
@@ -39,6 +40,6 @@ public class cardController : MonoBehaviour
     }
 
     public void DoCardAbility(){
-        Debug.Log(id);
-    }
+        GetComponent<playCardAction>().Activate();
+    } 
 }
